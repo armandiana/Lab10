@@ -181,6 +181,38 @@ public class PortoDAO {
 			}	 
 	}*/
 	
+	public Paper getPubblicazioneComune(Author a1, Author a2){
+		String sql="SELECT p.eprintid,  p.title, p.issn, p.publication, p.`type`, p.types\n" + 
+				"FROM creator c1, creator c2, paper p\n" + 
+				"WHERE  p.eprintid=c1.eprintid\n" + 
+				"AND p.eprintid=c2.eprintid\n" + 
+				"AND c1.authorid=?\n" + 
+				"AND c2.authorid=?\n" + 
+				"LIMIT 1";
+		try {
+			Connection conn = DBConnect.getConnection();
+			PreparedStatement st = conn.prepareStatement(sql);
+			
+			st.setInt(1, a1.getId());
+			st.setInt(2, a2.getId());
+			
+			ResultSet rs=st.executeQuery();
+
+			if(rs.next()) { //me ne deve restituire solo una
+				Paper p=new Paper(rs.getInt("p.eprintid"), rs.getString("p.title"), rs.getString("p.issn"), 
+						rs.getString("p.publication"), rs.getString("p.type"), rs.getString("p.types"));
+				if(p!=null) {
+					return p;
+				}
+			}
+			conn.close();
+			return null;
+	
+		}catch (SQLException e) {
+		 e.printStackTrace();
+			throw new RuntimeException("Errore Db");
+		}	 
+  }
 	
 	
 	

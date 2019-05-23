@@ -68,7 +68,7 @@ public class Paper {
 
 	@Override
 	public String toString() {
-		return "Pubblicazione: "+title+" "+types+"\n";
+		return eprintid+" "+title+" "+types;
 	}
 
 	@Override

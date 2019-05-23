@@ -1,15 +1,10 @@
 package it.polito.tdp.porto.model;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class TestModel {
 
 	public static void main(String[] args) {
 		
 		Model model = new Model();
-		
-		//Map<Integer, Author>mapA= new HashMap<Integer, Author>();
 
 		Author a=new Author(719,"Milanese", "Mario");
 		Author aa=new Author(2185,"Taragona", "Michele");
@@ -22,6 +17,18 @@ public class TestModel {
 				+model.getGrafo().edgeSet().size()+" ARCHI");
 		
 		System.out.println("\n************************************\n");
+		//System.out.println("GRAFO: \n"+model.getGrafo());
+		
+		System.out.println("\n************************************\n");
+		System.out.println("TROVA COAUTORI: \n"+model.getCoautori(a));
+		
+		System.out.println("\n************************************\n");
+		System.out.println("TROVA I NON COAUTORI: \n"+model.trovaNonCoautori(a));
+		
+		System.out.println("\n************************************\n");
+		System.out.println("SEQUENZA: \n"+model.trovaArticoliComiuni(a, aa));
+
+
 		
 	}
 
