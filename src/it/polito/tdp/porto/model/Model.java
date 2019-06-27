@@ -120,7 +120,7 @@ public class Model {
 		/*if(dijkstraPath.getVertexList().contains(a1) && dijkstraPath.getVertexList().contains(a2)) {
 			List<Paper>pubblicazioni=dao.getPubblicazioni(a1, a2);
 			return pubblicazioni;
-		}else {
+		}else {   
 			System.out.println("Non esiste la sequenza per gli autori selezionati");
 			return null;
 		}*/
